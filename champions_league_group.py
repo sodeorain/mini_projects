@@ -33,10 +33,12 @@ def run_matchday(table, fixtures_table):
         print(table)
 
 
-def record_fixtures(table, team1, team2, team3, team4):
-    table.loc[len(table)] = [team1, team2]
-    table.loc[len(table)] = [team3, team4]
-    return table 
+def record_fixtures(fixtures_table, team1, team2, team3, team4):
+    fixtures_table.loc[len(fixtures_table)] = [team1, team2]
+    fixtures_table.loc[len(fixtures_table)] = [team3, team4]
+    return fixtures_table
+
+
 
 def update_stats(table, home_team, away_team, home_score, away_score):
     table.loc[table["Team"] == f"Team {home_team}", "Goals For"] += home_score
