@@ -75,17 +75,6 @@ def play_game():
     "Goal Difference": [0, 0, 0, 0],
     "Points": [0, 0, 0, 0]
 }
-    data = {
-    "Team": ["Team 1", "Team 2", "Team 3", "Team 4"],
-    "Matches Played": [0, 0, 0, 0],
-    "Matches Won": [0, 0, 0, 0],
-    "Matches Drawn": [0, 0, 0, 0],
-    "Matches Lost": [0, 0, 0, 0],
-    "Goals For": [0, 0, 0, 0],
-    "Goals Against": [0, 0, 0, 0],
-    "Goal Difference": [0, 0, 0, 0],
-    "Points": [0, 0, 0, 0]
-}
     match_fixtures = pd.DataFrame(columns=["Home Team", "Away Team"])
 
     # Create the DataFrame
