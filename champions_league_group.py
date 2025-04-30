@@ -4,7 +4,7 @@ import random
 
 
 
-def run_matchday(table):
+def run_matchday(table, fixtures_table):
     for i in range(1, 6):
         print(f"\nMatchday {i}")
         
@@ -26,10 +26,17 @@ def run_matchday(table):
         away_score_2 = int(input(f"Team {away_team_2} score: "))
         print(f"FT - Team {home_team_2} {home_score_2}:{away_score_2} Team {away_team_2}")
         update_stats(table, home_team_2, away_team_2, home_score_2, away_score_2)
-
+        
+        record_fixtures(fixtures_table, home_team, away_team, home_team_2, away_team_2)
+        print(fixtures_table)
         print("\nUpdated Table:")
         print(table)
 
+
+def record_fixtures(table, team1, team2, team3, team4):
+    table.loc[len(table)] = [team1, team2]
+    table.loc[len(table)] = [team3, team4]
+    return table 
 
 def update_stats(table, home_team, away_team, home_score, away_score):
     table.loc[table["Team"] == f"Team {home_team}", "Goals For"] += home_score
@@ -66,10 +73,23 @@ def play_game():
     "Goal Difference": [0, 0, 0, 0],
     "Points": [0, 0, 0, 0]
 }
+    data = {
+    "Team": ["Team 1", "Team 2", "Team 3", "Team 4"],
+    "Matches Played": [0, 0, 0, 0],
+    "Matches Won": [0, 0, 0, 0],
+    "Matches Drawn": [0, 0, 0, 0],
+    "Matches Lost": [0, 0, 0, 0],
+    "Goals For": [0, 0, 0, 0],
+    "Goals Against": [0, 0, 0, 0],
+    "Goal Difference": [0, 0, 0, 0],
+    "Points": [0, 0, 0, 0]
+}
+    match_fixtures = pd.DataFrame(columns=["Home Team", "Away Team"])
+
     # Create the DataFrame
     df = pd.DataFrame(data)
     while True:
-        run_matchday(df)
+        run_matchday(df, match_fixtures)
           
 play_game()
 
